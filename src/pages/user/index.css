@@ -1,25 +1,39 @@
 .user-main .main_title {
   padding: 60px 0 20px 0;
-  color: #2c3e50;
-  font-size: 32px;
-  line-height: 46px;
-   display: flex;
-  flex-direction: column;
-  align-items: center; /* 垂直居中 */
-  text-align: center; /* 水平居中文本 */
-}
-.user-main h3,
-.user-main .divider,
-.user-main .desc {
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
   margin: 0 auto;
+  color: #1e293b;
+}
+
+html[data-theme='dark'] .user-main .main_title {
+  color: #f8fafc;
+}
+
+.user-main hr.divider {
+  display: none;
+}
+
+html[data-theme='dark'] .user-main hr.divider {
+  display: none;
 }
 
 .user-main .desc {
-  font-size: 17px;
+  font-size: 18px;
   text-align: center;
-  margin-bottom: 20px;
-  line-height: 40px;
-  word-break: break-all;
+  margin-bottom: 40px;
+  line-height: 1.8;
+  color: #475569;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  word-break: break-word;
+}
+
+html[data-theme='dark'] .user-main .desc {
+  color: #cbd5e1;
 }
 
 .user-main .home_block {
@@ -28,34 +42,67 @@
 
 .user-main .user_case {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  grid-row-gap: 20px;
-  grid-column-gap: 20px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
 }
+
+
 
 .user-main .user_case .case_item {
   display: flex;
   min-width: 0;
-  background: #ebedf0;
-  margin: 5px;
-  height: 80px;
-  border: 1px solid #eaecef;
-  box-shadow: #f8f9fa 0 1px 2px 0;
-  border-radius: 4px;
+  background: #cbd5e1; /* Darker background to contrast with white logos */
+  height: 110px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  border-radius: 16px;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+}
+
+html[data-theme='dark'] .user-main .user_case .case_item {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .user-main .user_case .case_item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 1.0rem 2rem rgba(0, 0, 0, .05);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.15), 0 10px 10px -5px rgba(59, 130, 246, 0.05);
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
-.user-main .user_case .case_item > img {
-  max-width: 90%;
-  max-height: 90%;
+html[data-theme='dark'] .user-main .user_case .case_item:hover {
+  box-shadow: 0 20px 25px -5px rgba(167, 139, 250, 0.15), 0 10px 10px -5px rgba(167, 139, 250, 0.05);
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+.user-main .user_case .case_item>img {
+  max-width: 75%;
+  max-height: 75%;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
+  filter: grayscale(15%);
+  object-fit: contain;
+}
+
+.user-main .user_case .case_item:hover>img {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+}
+
+html[data-theme='dark'] .user-main .user_case .case_item>img {
+  filter: grayscale(15%) brightness(1.1);
+}
+
+html[data-theme='dark'] .user-main .user_case .case_item:hover>img {
+  filter: grayscale(0%) brightness(1.2);
 }
 
 .user_page a {
@@ -65,16 +112,31 @@
 .user_page {
   margin-top: 50px !important;
 }
-.company_name{
-  font-size: 20px;
-  font-weight: 500;
-  margin-top: 25px;
-  color: rgba(21, 22, 34, 0.95);
-}
-.case_item {
-  font-weight: bold ;
+
+.company_name {
+  width: 100%;
+  display: block;
 }
 
+.company_name span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+html[data-theme='dark'] .company_name span {
+  color: #e2e8f0;
+}
+
+.user-main .user_case .case_item:hover .company_name span {
+  color: #0284c7;
+}
+
+html[data-theme='dark'] .user-main .user_case .case_item:hover .company_name span {
+  color: #a78bfa;
+}
 
 /* mobile theme */
 @media screen and (max-width: 996px) {
@@ -82,7 +144,19 @@
     margin-top: 20px !important;
   }
 
+  .user-main .main_title {
+    font-size: 36px;
+    padding: 40px 0 15px 0;
+  }
+
   .user-main .desc {
-    line-height: 30px;
+    line-height: 1.6;
+    font-size: 16px;
+    padding: 0 15px;
+  }
+
+  .user-main .user_case {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
   }
 }

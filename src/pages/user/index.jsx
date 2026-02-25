@@ -23,16 +23,10 @@ export default function UserPage() {
         {() => (
           <div className="block user_page container">
             <div className="user-main" style={{ padding: "10px 0 30px" }}>
-              <h3
-                className="fs-2 mb-4 fw-bold text-center"
-                style={{ padding: "10px 0 30px", textAlign: "center" }}
-              >
+              <h3 className="main_title">
                 {ourUsers}
               </h3>
-              <hr
-                className="divider my-4 mx-auto"
-                style={{ maxWidth: "10rem" }}
-              ></hr>
+              <hr className="divider" />
               <div
                 className="desc"
                 dangerouslySetInnerHTML={{ __html: tip }}
@@ -59,11 +53,13 @@ export default function UserPage() {
                 ))}
                 {nologo_companies.map((item, i) => (
                   <div
-                    key={i}
+                    key={`nologo-${i}`}
                     className="company-item"
                   >
-                    <a className="company_name ">
-                      <div className="case_item case_hover">{item.name}</div>
+                    <a className="company_name">
+                      <div className="case_item case_hover">
+                        <span>{item.name}</span>
+                      </div>
                     </a>
                   </div>
                 ))}
